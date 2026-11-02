@@ -94,3 +94,9 @@ Verification covers authenticated access, all six roles, department scopes, stud
 QR attendance, automatic email delivery, scheduled backup jobs, external ERP integration, legally verified digital signatures, and institution-specific accreditation form templates are not included. The built-in certificates are printable participation records with a reference; authorized institutional signatures are handled by the institute. Academic lookup values share a master_data table; activity-to-student, faculty, resource-person and target-group relationships use junction tables.
 
 See `public/CampusFlow-Project-Guide.pdf` for the explanation document, database summary, setup instructions, demonstration script, test evidence, and viva questions.
+
+## Render deployment
+
+The Render entry point is `npm run start:render`. It initializes the local D1-compatible database, serves the built Worker on `0.0.0.0:$PORT`, and enables a password-protected administrator session when `CAMPUSFLOW_ADMIN_PASSWORD` and `CAMPUSFLOW_SESSION_SECRET` are configured. `CAMPUSFLOW_ADMIN_EMAIL`, `CAMPUSFLOW_ADMIN_NAME`, and `CAMPUSFLOW_PERSIST_DIR` are optional.
+
+On a free Render web service, the local database and evidence storage are ephemeral and can reset on redeploy or instance replacement. For durable production use, upgrade the web service and attach a persistent disk at `/opt/render/project/src/.render-state`, or migrate the D1/R2 bindings to managed external services.

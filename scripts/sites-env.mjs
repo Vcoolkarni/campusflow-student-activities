@@ -11,6 +11,7 @@ for (const directory of [
   path.dirname(process.env.WRANGLER_LOG_PATH),
   process.env.WRANGLER_REGISTRY_PATH,
   process.env.MINIFLARE_REGISTRY_PATH,
+  process.env.XDG_CONFIG_HOME,
 ]) {
   mkdirSync(directory, { recursive: true });
 }
